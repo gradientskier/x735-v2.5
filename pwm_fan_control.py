@@ -20,18 +20,16 @@ def get_temp():
         raise RuntimeError('Could not get temperature')
 while 1:
     temp = get_temp()                        # Get the current CPU temperature
-    if temp > 70:                            # Check temperature threshhold, in degrees celcius
+    if temp > 80:                            # Check temperature threshhold, in degrees celcius
         fan.ChangeDutyCycle(100)             # Set fan duty based on temperature, 100 is max speed and 0 is min speed or off.
-    elif temp > 60:
+    elif temp > 75:
         fan.ChangeDutyCycle(85)
-    elif temp > 50:
+    elif temp > 70:
         fan.ChangeDutyCycle(60)
-    elif temp > 40:
+    elif temp > 65:
         fan.ChangeDutyCycle(50)
-    elif temp > 32:
+    elif temp > 60:
         fan.ChangeDutyCycle(45)
-    elif temp > 25:
-        fan.ChangeDutyCycle(40)
-    else:
+    elif temp < 50:
         fan.ChangeDutyCycle(0)
     time.sleep(5)                            # Sleep for 5 seconds
